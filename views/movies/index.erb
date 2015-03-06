@@ -1,0 +1,34 @@
+<h2>Movies</h2>
+<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Sort</button><br>
+<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+  <li><a href="/movies?order=<%= @sort_options[:alph] %>">Alphabetically</a></li>
+  <li><a href="/movies?order=<%= @sort_options[:year] %>">By Year</a></li>
+  <li><a href="/movies?order=<%= @sort_options[:rating] %>">By Rating</a></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Year</th>
+      <th>Rating</th>
+      <th>Genre</th>
+      <th>Studio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+    <tr>
+      <td><a href="/movies/<%= movie["id"] %>"><%= movie["title"] %></a></td>
+      <td><%= movie["year"] %></td>
+      <td><%= movie["rating"] %></td>
+      <td><%= movie["genre"] %></td>
+      <td><%= movie["studio"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% unless @movies.count < 20 %>
+  <a href="/movies?page=<%= @page %>&order=<%= @curr_order %>" class="button round">More Movies</a>
+<% end %>

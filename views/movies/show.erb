@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="column">
+    <h2><%= @movie["title"] %> (<%= @movie["year"] %>)</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-2 columns">
+    <strong>Rating: <%= @movie["rating"] %></strong>
+  </div>
+  <div class="small-3 columns">
+    <strong>Genre: <%= @movie["genre"] %></strong>
+  </div>
+  <div class="small-7 columns">
+    <strong>Studio: <%= @movie["studio"] %></strong>
+  </div>
+  <hr>
+</div>
+
+<div class="row">
+  <div class="column">
+    <table>
+      <thead>
+        <tr>
+          <th>Character</th>
+          <th>Actor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @characters.each do |character| %>
+        <tr>
+          <td><%= character["name"] %></td>
+          <td><a href="/actors/<%= character["actor_id"] %>"><%= character["actor"] %></a></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

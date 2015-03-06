@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Catalog Deluxe</title>
+    <link rel="stylesheet" href="/css/foundation.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/normalize.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/css/app.css" media="screen" title="no title" charset="utf-8">
+
+    <script src="/js/vendor/modernizr.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class ="column">
+          <h1>Movie Catalog Deluxe</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class ="column">
+          <div class="icon-bar two-up">
+            <a class="item" href="/movies">
+              <img src="http://ia.media-imdb.com/images/M/MV5BNjkxMTc0MDc4N15BMl5BanBnXkFtZTgwODUyNTI1MDE@._V1_SX640_SY720_.jpg" >
+              <label>Movies</label>
+            </a>
+            <a class="item" href="/actors">
+              <img src="http://img2.timeinc.net/people/i/2012/database/120312/jennifer-lawrence-300.jpg">
+              <label>Actors</label>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column">
+          <% flash.keys.each do |type| %>
+            <div data-alert class="flash <%= type %> alert-box radius">
+              <%= flash[type] %>
+              <a href="#" class="close">&times;</a>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

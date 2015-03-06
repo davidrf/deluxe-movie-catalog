@@ -1,0 +1,27 @@
+<h2>Actors</h2>
+<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">Sort</button><br>
+<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+  <li><a href="/actors?order=<%= @sort_options[:alph] %>">Alphabetically</a></li>
+  <li><a href="/actors?order=<%= @sort_options[:app] %>">By Appearances</a></li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Movie Appearances</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @actors.each do |actor| %>
+    <tr>
+      <td><a href="/actors/<%= actor["id"] %>"><%= actor["name"] %></a></td>
+      <td class="movie_count"><%= actor["movie_count"] %></a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% unless @actors.count < 20 %>
+  <a href="/actors?page=<%= @page %>&order=<%= @curr_order %>" class="button round">More Actors</a>
+<% end %>
